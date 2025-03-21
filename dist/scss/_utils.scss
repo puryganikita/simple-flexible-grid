@@ -1,0 +1,19 @@
+@use 'vars';
+
+@mixin create-grid-item($columns) {
+  & {
+    box-sizing: border-box;
+    flex-grow: 0;
+    flex-basis: auto;
+
+    @each $breakpoint, $value in vars.$breakpoints {
+      @media (min-width: #{$value}px) {
+        @for $size from 1 through $columns {
+          &.#{$breakpoint}-#{$size} {
+            width: calc(100% * $size / $columns - ($columns - $size) * (var(--column-gap) / $columns));
+          }
+        }
+      }
+    }
+  }
+}

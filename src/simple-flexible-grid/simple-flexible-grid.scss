@@ -1,0 +1,17 @@
+@use 'vars';
+@use 'utils';
+
+.#{vars.$class-prefix}container {
+  --row-gap: 0px;
+  --column-gap: 0px;
+
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--row-gap) var(--column-gap);
+}
+
+.#{vars.$class-prefix}item {
+  @include utils.create-grid-item(12);
+}
